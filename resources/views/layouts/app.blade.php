@@ -25,7 +25,7 @@
     <ul class="flex items-center">
         @auth
             <li>
-                <a href="" class="p-3"></a>
+                <a href="" class="p-3">Odette</a>
             </li>
             <li>
                 <form action="" method="post" class="p-3 inline">
@@ -37,7 +37,7 @@
 
         @guest
             <li>
-                <a href="" class="p-3">Login</a>
+                <a href="{{ route('login') }}" class="p-3">Login</a>
             </li>
             <li>
                 <a href="{{ route('register') }}" class="p-3">Register</a>

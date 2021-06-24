@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class RegisterController extends Controller
@@ -32,6 +33,9 @@ class RegisterController extends Controller
             'email'=> $request->email,
             'password'=> Hash::make($request->password),
         ]);
+
+        Auth::attempt($request->only('email','password'));
+        return redirect()->route('dashboard');
 
 
 
