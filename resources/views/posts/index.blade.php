@@ -23,15 +23,22 @@
                 </form>
             @endauth
 
-            {{--@if ($posts->count())
+            @if ($posts->count())
                 @foreach ($posts as $post)
-                    <x-post :post="$post" />
-                @endforeach
+                   {{-- <x-post :post="$post" />--}}
 
+                    <div class="mb-4">
+                        {{--itarate throug post go into user model and grab name--}}
+                        <a href="" class="font-bold">{{ $post->user->name }}</a>
+                        <span class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
+                        <p class="mb-2">{{ $post->body }}</p>
+                    </div>
+                @endforeach
+                {{--pagination footer--}}
                 {{ $posts->links() }}
             @else
                 <p>There are no posts</p>
-            @endif--}}
+            @endif
         </div>
     </div>
 @endsection

@@ -14,7 +14,14 @@ class PostController extends Controller
 
     public function index()
     {
-        return view('posts.index');
+       // $posts = Post::get(); //eloquent get all
+        //will paginate output what value of argument reflects
+        $posts = Post::paginate('20');
+
+        //dd($posts);
+        return view('posts.index', [
+            'posts' => $posts
+        ]);
     }
 
     public function store(Request $request)
@@ -24,6 +31,12 @@ class PostController extends Controller
         ]);
 
         //Authorized user can post and create
-        auth()->user()->posts()->create();
+        //auth()->user()->posts()->create();
+        $request->user()->posts()->create([
+            //automatically will fill in user_id
+            'body' => $request->body
+        ]);
+
+        return back();
     }
 }

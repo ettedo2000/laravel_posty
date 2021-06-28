@@ -16,7 +16,7 @@ class DashboardController extends Controller
         //asMany properties
         //dd(auth()->user()->posts());
         //collection
-        dd(auth()->user()->posts);
+        //dd(auth()->user()->posts);
         return view('dashboard');
     }
 }
