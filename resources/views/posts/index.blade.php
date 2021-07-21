@@ -24,6 +24,9 @@
             @endauth
 
             @if ($posts->count())
+                <div class="mb-4">
+                    <input type="text" class="" placeholder="Search ..." >
+                </div>
                 @foreach ($posts as $post)
                    {{-- <x-post :post="$post" />--}}
 

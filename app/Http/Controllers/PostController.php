@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Repository\ElequentBase;
 
 class PostController extends Controller
 {
@@ -12,16 +13,34 @@ class PostController extends Controller
         //$this->middleware(['auth']);
     }
 
-    public function index()
+   /* public function index()
     {
-       // $posts = Post::get(); //eloquent get all
+        dd('????');
+        //$posts = Post::get(); //eloquent get all
         //will paginate output what value of argument reflects
+
         $posts = Post::paginate('20');
 
-        //dd($posts);
+        dd($posts);
         return view('posts.index', [
             'posts' => $posts
         ]);
+    }*/
+
+    public function getFilterSearch(Request $request)
+    {
+      if($request->id){echo 'yes';
+          $posts = ElequentBase::findBy($request->id);
+      } else{
+          echo 'nope';
+          $posts = Post::paginate('20');
+      }
+
+        //dd($request);
+        return view('posts.index', [
+            'posts' => $posts
+        ]);
+
     }
 
     public function store(Request $request)
